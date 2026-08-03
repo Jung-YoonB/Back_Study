@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, com.kh.mvc.model.MemberDTO" %>
+
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +38,31 @@
 		<%	
 			}
 		%>
+	</tbody>
+	</table>
+	
+	<%-- #260803 JSTL 적용  --%>
+	<h2>#260803 JSTL 적용 해보기</h2>
+	<br>
+	<table border="1">
+	<thead>
+		<tr>
+			<th>회원 번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>나이</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:set var="memberList" value="<%= list %>" scope="request" />
+		<c:forEach var="m" items="${ memberList }">
+			<tr>
+				<td>${ m.id }</td>
+				<td>${ m.name }</td>
+				<td>${ m.email }</td>
+				<td>${ m.age }</td>
+			</tr>
+		</c:forEach>
 	</tbody>
 	</table>
 </body>
