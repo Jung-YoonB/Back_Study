@@ -54,8 +54,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:set var="memberList" value="<%= list %>" scope="request" />
+		<%-- 
+			<c:set var="memberList" value="<%= list %>" scope="request" /> 
+			-> MemberListServlet 에서 이미 memberList를 정의해서 저장하고 있으므로 
+				다시 request 영역에 저장 할 필요 없음!
+		--%>
 		<c:forEach var="m" items="${ memberList }">
+			<%-- 이미 MemberListServlet에서 저장한 memberList 를 불러오기 --%>
 			<tr>
 				<td>${ m.id }</td>
 				<td>${ m.name }</td>
